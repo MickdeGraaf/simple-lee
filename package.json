@@ -10,7 +10,10 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@trivago/prettier-plugin-sort-imports": "^3.3.1",
-    "@types/node": "^18.11.1",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.11.11",
+    "@types/node-fetch": "^2.6.2",
+    "@types/request-promise": "^4.1.48",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "commitizen": "^4.2.5",
@@ -46,6 +49,7 @@
   },
   "scripts": {
     "build": "tsc --build \"tsconfig.prod.json\"",
+    "dev": "yarn build && node -r dotenv/config dist/index.js",
     "clean": "shx rm -rf ./dist",
     "lint": "yarn lint:ts && yarn prettier:check && yarn typecheck",
     "lint:ts": "eslint --ext .js,.ts .",
@@ -56,5 +60,10 @@
     "prettier:write": "prettier --write \"**/*.{js,json,md,ts,yml}\"",
     "typecheck": "tsc --noEmit"
   },
-  "types": "./dist/index.d.ts"
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
 }
